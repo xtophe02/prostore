@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 import {
   Sheet,
@@ -26,12 +27,19 @@ export function Menu() {
             Cart
           </Link>
         </Button>
-        <Button asChild>
-          <Link href="/sign-in">
-            <UserIcon />
-            Sign in
-          </Link>
-        </Button>
+
+        <SignedOut>
+          <SignInButton>
+            <Button>
+              <UserIcon />
+              Sign in
+            </Button>
+          </SignInButton>
+        </SignedOut>
+
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </nav>
       <nav className="md:hidden">
         <Sheet>
